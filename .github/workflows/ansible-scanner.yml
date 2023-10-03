@@ -36,7 +36,6 @@ jobs:
     # Run the ansible-lint linter against Ansible code
     runs-on: ubuntu-latest
     name: "Ansible Linter"
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
