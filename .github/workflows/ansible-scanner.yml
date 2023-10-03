@@ -22,7 +22,7 @@ jobs:
         with:
           platform_type: ansible
           output_formats: 'sarif'
-          paths: '/'
+          path: '/'
           
       - name: Show results
         run: |
