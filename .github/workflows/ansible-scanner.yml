@@ -36,7 +36,6 @@ jobs:
     # Run the ansible-lint linter against Ansible code
     runs-on: ubuntu-latest
     name: "Ansible Linter"
-    name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
