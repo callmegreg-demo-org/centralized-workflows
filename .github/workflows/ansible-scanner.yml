@@ -28,7 +28,7 @@ jobs:
           cat results.sarif
       
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: results.sarif
 
@@ -46,6 +46,6 @@ jobs:
           args: "--format sarif --sarif-file lint-results.sarif"
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: lint-results.sarif
