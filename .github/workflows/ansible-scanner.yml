@@ -21,7 +21,7 @@ jobs:
         uses: Checkmarx/kics-github-action@v1.7.0
         with:
           platform_type: ansible
-          output_formats: 'sarif'
+          output_formats: 'json,sarif'
           path: '/'
           
       - name: Show results
