@@ -9,31 +9,36 @@ permissions:
   actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
 
 jobs:
-  kics-security-scan:
+  ansible-security-scan:
     # Run the KICS security scanner against Ansible code
     runs-on: ubuntu-latest
     name: "Ansible Security Scan"
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Mkdir results-dir
+        # make sure results dir is created
+        run: mkdir -p results-dir
   
       - name: Run KICS Scan with SARIF result
         uses: Checkmarx/kics-github-action@v1.7.0
         with:
+          path: '/'
+          output_path: results-dir
           platform_type: ansible
           output_formats: 'json,sarif'
-          path: '/'
           
       - name: Show results
         run: |
-          cat results.sarif
+          cat results-dir/results.sarif
       
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: results.sarif
+          sarif_file: results-dir/results.sarif
 
-  ansible-lint:
+  ansible-linter:
     # Run the ansible-lint linter against Ansible code
     runs-on: ubuntu-latest
     name: "Ansible Linter"
