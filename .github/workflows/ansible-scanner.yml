@@ -48,7 +48,7 @@ jobs:
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6.20.3
         with:
-          args: "--sarif-file lint-results.sarif -vv"
+          args: "--sarif-file lint-results.sarif -q"
 
       - name: Upload SARIF file
         if: success() || failure()
