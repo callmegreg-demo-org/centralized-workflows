@@ -50,6 +50,13 @@ jobs:
         with:
           args: "--sarif-file lint-results.sarif --fix=all -vv"
 
+      - name: push autofixes
+        run: |
+          git config --global user.name 'Greg'
+          git config --global user.email '$GITHUB_ACTOR'
+          git commit -am "Automated fixed"
+          git push
+
       - name: Upload SARIF file
         if: success() || failure()
         uses: github/codeql-action/upload-sarif@v2
