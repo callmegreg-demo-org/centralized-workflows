@@ -54,10 +54,12 @@ jobs:
         with:
           args: "--format sarif --sarif-file lint-results.sarif -vv"
 
-      - name: list script
+      - name: pwd script
+        if: success() || failure()
         run: pwd
       
       - name: list script
+        if: success() || failure()
         run: ls -la
 
       - name: Upload SARIF file
