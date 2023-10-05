@@ -4,7 +4,7 @@ on:
   workflow_call:
 
 permissions:
-  contents: read # for actions/checkout to fetch code
+  contents: write # for actions/checkout to fetch code
   security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
   actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
 
@@ -48,7 +48,7 @@ jobs:
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6.20.3
         with:
-          args: "--sarif-file lint-results.sarif -vv"
+          args: "--sarif-file lint-results.sarif --fix=all -vv"
 
       - name: Upload SARIF file
         if: success() || failure()
