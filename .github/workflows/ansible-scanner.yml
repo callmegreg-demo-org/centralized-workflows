@@ -51,14 +51,6 @@ jobs:
         with:
           args: "--sarif-file lint-results.sarif -vv"
 
-      - name: pwd script
-        if: success() || failure()
-        run: pwd
-      
-      - name: list script
-        if: success() || failure()
-        run: ls -la
-
       - name: Upload SARIF file
         if: success() || failure()
         uses: github/codeql-action/upload-sarif@v2
