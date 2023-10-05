@@ -29,14 +29,11 @@ jobs:
           platform_type: ansible
           output_formats: 'json,sarif'
           enable_comments: true
-          ignore_on_exit: results # options: all, results, errors, none
+          # ignore_on_exit: results # options: all, results, errors, none
           # fail_on: 'high,medium,low,info' # only relevant when failing the job based on results
-          
-      - name: Show results
-        run: |
-          cat results-dir/results.sarif
       
       - name: Upload SARIF file
+        if: success() || failure()
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: results-dir/results.sarif
