@@ -52,7 +52,7 @@ jobs:
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6.20.3
         with:
-          args: "--format sarif --sarif-file lint-results.sarif -vv"
+          args: "--sarif-file lint-results.sarif -vv"
 
       - name: pwd script
         if: success() || failure()
